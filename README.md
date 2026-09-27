@@ -4,6 +4,8 @@
 
 Поддерживает YouTube, TikTok, Instagram и сотни других сайтов.
 
+[Последняя сборка](https://github.com/stasspasjuk-rgb/KazkaDownloader/releases/latest)
+
 ---
 
 ## ✨ Возможности
@@ -58,6 +60,8 @@ dist/KAZKADOWNLOADER.exe
 Modern desktop video downloader for Windows.
 
 Supports YouTube, TikTok, Instagram and hundreds of other sites.
+
+[Last Releases](https://github.com/stasspasjuk-rgb/KazkaDownloader/releases/latest)
 
 ---
 
