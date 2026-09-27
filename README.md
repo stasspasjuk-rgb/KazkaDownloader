@@ -1,114 +1,48 @@
-# 🚀 KAZKADOWNLOADER
+# KazkaDownloader
 
-Современный десктопный загрузчик видео для Windows.
+Десктопное приложение для скачивания видео с любых сайтов с помощью `yt-dlp` с точным сохранением предоставленного дизайна (темно-шоколадная тема, экраны выбора языка, промокод, история скачек и логирование).
 
-Поддерживает YouTube, TikTok, Instagram и сотни других сайтов.
+## Возможности
 
-[Последняя сборка](https://github.com/stasspasjuk-rgb/KazkaDownloader/releases/latest)
+- **Точное соответствие дизайну**:
+  - Темная шоколадно-кофейная гамма (`#361703`), скругленные карточки со стеклянным эффектом и мягкими бордерами.
+  - Верхняя навигационная панель с логотипом **KazkaDownloader**, переключателем языка (`RU` / `EN`), кнопкой **«История»** и синей плашкой **`@kazkavpn`** (открывает Telegram).
+  - Модальное окно **«Выбери язык» / «Select language»** с объемными флагами РФ и США.
+  - Промо-окно **«Знал ли ты?» / «Did you know?»** с иконкой замка, описанием VPN и кнопкой копирования промокода `KAZKADOWNLOADER`.
+  - Главный экран загрузчика с полями:
+    - **«Ссылка на видео»** + кнопка **«Вставить»** из буфера обмена.
+    - **«Папка сохранения»** + кнопка **«Обзор»** (выбор системной папки Windows).
+    - **«Качество»** (Максимальное, 1080p, 720p, 480p, 360p, Только аудио MP3).
+    - Кнопка **«СКАЧАТЬ»** с фирменным оранжевым градиентом.
+    - Окно **«Лог»** с выводом статусов («Скачиваю yt-dlp», «Скачиваю ffmpeg.exe», «Готов к работе!» и прогрессом загрузки).
+  - Экран **«История скачек»** с карточками загруженных файлов:
+    - Кнопка **«▶ Открыть»** (воспроизведение в плеере Windows).
+    - Кнопка **«📁 Папка»** (открытие в проводнике с выделением файла).
+    - Кнопка **«✖»** (удаление из истории).
 
----
+- **Движок yt-dlp**:
+  - Поддержка скачивания с YouTube, VK Видео, RuTube, TikTok, Instagram, Twitter (X), Reddit, Twitch, Vimeo и еще 1000+ поддерживаемых сайтов.
+  - Интеграция с ffmpeg для склеивания потоков высокой четкости (1080p+) и извлечения MP3.
+  - Сохранение истории в `history.json` и настроек в `config.json`.
 
-## ✨ Возможности
+## Быстрый запуск
 
-- 🌍 Выбор языка (Русский / English)
-- ⚡ Автоматическая загрузка `yt-dlp` + `ffmpeg` при первом запуске
-- 📹 Выбор качества (Максимальное, 1080p, 720p, 480p, только аудио MP3)
-- 📜 История загрузок
-- 🔔 Уведомления Windows
-- ✈️ Кнопка быстрого перехода в Telegram-канал @kazkavpn
-- 📦 Полностью портативный — всего один файл `.exe`
+1. Установите зависимости (если еще не установлены):
+   ```bash
+   pip install -r requirements.txt
+   ```
 
----
+2. Запустите приложение:
+   - Двойным кликом по файлу `run.bat`
+   - Или через терминал:
+     ```bash
+     python main.py
+     ```
 
-## 📥 Как скачать и запустить
+## Сборка в автономный `.exe`
 
-1. Перейди во вкладку **Releases**
-2. Скачай файл `KAZKADOWNLOADER.exe`
-3. Запусти его
-
-Больше ничего устанавливать не нужно.  
-При первом запуске программа сама скачает необходимые компоненты.
-
----
-
-## 🛠️ Сборка из исходников
-
-### Требования
-- Python **3.10** или новее (рекомендуется 3.11 / 3.12)
-
-### Команды
-
+Для создания портативного Windows-приложения без необходимости открывать терминал:
 ```bash
-# 1. Установка зависимостей
-python -m pip install --upgrade pip
-python -m pip install customtkinter pyinstaller win10toast
-
-# 2. Сборка exe
-python -m PyInstaller --noconfirm --onefile --windowed --name "KAZKADOWNLOADER" --icon=logo.ico --collect-all customtkinter main.py
+build_exe.bat
 ```
-
-Готовый файл появится здесь:
-
-dist/KAZKADOWNLOADER.exe
-
-# 📌 Примечания
-
-Перед сборкой положи файл logo.ico в ту же папку, где лежит main.py
-Программа создаёт config.json и history.json рядом с exe 
-
-
-Modern desktop video downloader for Windows.
-
-Supports YouTube, TikTok, Instagram and hundreds of other sites.
-
-[Last Releases](https://github.com/stasspasjuk-rgb/KazkaDownloader/releases/latest)
-
----
-
-## ✨ Features
-
-- 🌍 Language selection (Russian / English)
-- ⚡ Automatic download of `yt-dlp` + `ffmpeg` on first launch
-- 📹 Quality selection (Best, 1080p, 720p, 480p, Audio only MP3)
-- 📜 Download history
-- 🔔 Windows notifications
-- ✈️ Quick button to Telegram channel @kazkavpn
-- 📦 Fully portable — just one `.exe` file
-
----
-
-## 📥 How to Download & Run
-
-1. Go to the **Releases** tab
-2. Download `KAZKADOWNLOADER.exe`
-3. Run it
-
-Nothing else needs to be installed.  
-On first launch the program will automatically download required components.
-
----
-
-## 🛠️ Build from Source
-
-### Requirements
-- Python **3.10** or newer (3.11 / 3.12 recommended)
-
-### Commands
-
-```bash
-# 1. Install dependencies
-python -m pip install --upgrade pip
-python -m pip install customtkinter pyinstaller win10toast
-
-# 2. Build the executable
-python -m PyInstaller --noconfirm --onefile --windowed --name "KAZKADOWNLOADER" --icon=logo.ico --collect-all customtkinter main.py
-```
-
-The ready file will be here:
-
-dist/KAZKADOWNLOADER.exe
-
-📌 Notes
-
-Put logo.ico in the same folder as main.py before building
-The program creates config.json and history.json next to the exe
+Готовый исполняемый файл появится в папке `dist\KazkaDownloader\`.

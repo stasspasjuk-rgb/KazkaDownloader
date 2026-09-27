@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KazkaDownloader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Window Container -->
+  <div class="app-container">
+    
+    <!-- Top Bar Navigation (matching Surface Book 5 & 6) -->
+    <header class="top-nav">
+      <div class="brand" id="btn-brand" title="KazkaDownloader">
+        <img src="assets/logo.svg" alt="KazkaDownloader Logo" class="brand-logo">
+        <span class="brand-text">KazkaDownloader</span>
+      </div>
+
+      <div class="nav-controls">
+        <!-- Language Switcher Pill -->
+        <button class="nav-btn lang-pill" id="btn-lang-toggle" title="Сменить язык / Change language">
+          <span id="current-lang-code">RU</span>
+        </button>
+
+        <!-- History Button -->
+        <button class="nav-btn history-pill" id="btn-history-toggle">
+          <img src="assets/history.svg" alt="" class="nav-icon">
+          <span data-i18n="history_nav">История</span>
+        </button>
+
+        <!-- Telegram Pill Button -->
+        <button class="nav-btn tg-pill" id="btn-telegram" title="Telegram @kazkavpn">
+          <img src="assets/telegram.svg" alt="" class="tg-icon">
+          <span>@kazkavpn</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- SCREEN 5: Main Downloader Card -->
+      <section class="card main-card" id="view-downloader">
+        <!-- Video Link Input -->
+        <div class="form-group">
+          <label for="input-url" data-i18n="label_url">Ссылка на видео</label>
+          <div class="input-with-button">
+            <input type="text" id="input-url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off" spellcheck="false">
+            <button class="btn btn-secondary" id="btn-paste" data-i18n="btn_paste">Вставить</button>
+          </div>
+        </div>
+
+        <!-- Save Folder Input -->
+        <div class="form-group">
+          <label for="input-folder" data-i18n="label_folder">Папка сохранения</label>
+          <div class="input-with-button">
+            <input type="text" id="input-folder" placeholder="C:/users/admin/downloads" readonly>
+            <button class="btn btn-secondary" id="btn-browse" data-i18n="btn_browse">Обзор</button>
+          </div>
+        </div>
+
+        <!-- Quality Select -->
+        <div class="form-group">
+          <label for="select-quality" data-i18n="label_quality">Качество</label>
+          <div class="custom-select-wrapper">
+            <select id="select-quality">
+              <option value="max" selected data-i18n="opt_max">Максимальное</option>
+              <option value="1080p">1080p Full HD</option>
+              <option value="720p">720p HD</option>
+              <option value="480p">480p</option>
+              <option value="360p">360p</option>
+              <option value="audio" data-i18n="opt_audio">Только аудио (MP3)</option>
+            </select>
+            <div class="select-chevron">
+              <img src="assets/chevron.svg" alt="v">
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Action Button -->
+        <button class="btn btn-primary" id="btn-download">
+          <span id="btn-download-text" data-i18n="btn_download">СКАЧАТЬ</span>
+        </button>
+
+        <!-- Live Progress Bar (appears during download) -->
+        <div class="progress-container" id="progress-container" style="display: none;">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+          <div class="progress-stats">
+            <span id="progress-percent">0%</span>
+            <span id="progress-speed">--</span>
+            <span id="progress-eta">--</span>
+          </div>
+        </div>
+
+        <!-- Log Box -->
+        <div class="form-group log-group">
+          <label data-i18n="label_log">Лог</label>
+          <div class="log-box" id="log-box"></div>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: History Card -->
+      <section class="card history-card" id="view-history" style="display: none;">
+        <div class="history-header">
+          <h2 class="history-title" data-i18n="history_title">История скачек</h2>
+          <button class="btn btn-subtle" id="btn-back-to-download" data-i18n="btn_back">← Назад к скачиванию</button>
+        </div>
+
+        <div class="history-list-wrapper">
+          <div class="history-list" id="history-items-container">
+            <!-- Dynamic Items injected here -->
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- SCREEN 1 & 3: Language Selection Modal -->
+    <div class="modal-overlay" id="modal-language" style="display: none;">
+      <div class="modal-card lang-modal-card">
+        <div class="modal-top">
+          <h2 class="modal-title" data-i18n="select_lang_title">Выбери язык</h2>
+          <button class="nav-btn tg-pill modal-tg-btn" id="modal-lang-tg">
+            <img src="assets/telegram.svg" alt="" class="tg-icon">
+            <span>@kazkavpn</span>
+          </button>
+        </div>
+
+        <div class="lang-options">
+          <!-- Russian Choice -->
+          <div class="lang-option-card" id="opt-lang-ru">
+            <div class="flag-icon-container">
+              <img src="assets/flag_ru.svg" alt="Россия" class="flag-img">
+            </div>
+            <button class="lang-choice-btn" id="btn-select-ru">Русский</button>
+          </div>
+
+          <!-- English Choice -->
+          <div class="lang-option-card" id="opt-lang-en">
+            <div class="flag-icon-container">
+              <img src="assets/flag_us.svg" alt="English" class="flag-img">
+            </div>
+            <button class="lang-choice-btn" id="btn-select-en">English</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 & 4: Promo / Did You Know Modal -->
+    <div class="modal-overlay" id="modal-promo" style="display: none;">
+      <div class="modal-card promo-modal-card">
+        <div class="modal-top">
+          <div class="promo-title-group">
+            <img src="assets/lock.svg" alt="" class="promo-lock-icon">
+            <h2 class="modal-title" data-i18n="promo_title">Знал ли ты?</h2>
+          </div>
+          <button class="nav-btn tg-pill modal-tg-btn" id="modal-promo-tg">
+            <img src="assets/telegram.svg" alt="" class="tg-icon">
+            <span>@kazkavpn</span>
+          </button>
+        </div>
+
+        <div class="promo-body">
+          <p class="promo-text" data-i18n="promo_text_1">
+            Что kazkavpn один из лучший дешевых ВПН с обходом блокировок, а так-же бесплатный пробный период
+          </p>
+          <p class="promo-text" data-i18n="promo_text_2">
+            Снизу ты видишь промокод который дает тебе скиду 10% на покупку впн!
+          </p>
+        </div>
+
+        <div class="promocode-action-row">
+          <div class="promocode-box" id="promocode-value" title="Кликните чтобы скопировать">
+            KAZKADOWNLOADER
+          </div>
+          <button class="btn-copy-code" id="btn-copy-code" title="Скопировать промокод">
+            <img src="assets/copy.svg" alt="Копировать" class="copy-icon">
+          </button>
+        </div>
+
+        <button class="btn btn-primary btn-promo-continue" id="btn-close-promo" data-i18n="btn_continue">
+          ПРОДОЛЖИТЬ
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast Notification for Copy/Info -->
+    <div class="toast-notification" id="toast"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

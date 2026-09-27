@@ -1,0 +1,46 @@
+<svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow-us" x="-4" y="-2" width="72" height="56" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    <linearGradient id="wave-us" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="25%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="75%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+    <clipPath id="flag-shape-us">
+      <path d="M4 8C14 4 22 12 32 8C42 4 50 12 60 8V40C50 44 42 36 32 40C22 44 14 36 4 40V8Z"/>
+    </clipPath>
+  </defs>
+  <g filter="url(#shadow-us)" clip-path="url(#flag-shape-us)">
+    <!-- 13 Stripes -->
+    <rect x="0" y="0" width="64" height="48" fill="#B22234"/>
+    <rect x="0" y="3.7" width="64" height="3.7" fill="#FFFFFF"/>
+    <rect x="0" y="11.1" width="64" height="3.7" fill="#FFFFFF"/>
+    <rect x="0" y="18.5" width="64" height="3.7" fill="#FFFFFF"/>
+    <rect x="0" y="25.8" width="64" height="3.7" fill="#FFFFFF"/>
+    <rect x="0" y="33.2" width="64" height="3.7" fill="#FFFFFF"/>
+    <rect x="0" y="40.6" width="64" height="3.7" fill="#FFFFFF"/>
+    <!-- Canton (Blue field) -->
+    <rect x="0" y="0" width="28" height="26" fill="#3C3B6E"/>
+    <!-- Stars hint -->
+    <circle cx="5" cy="5" r="1.2" fill="#FFFFFF"/>
+    <circle cx="11" cy="5" r="1.2" fill="#FFFFFF"/>
+    <circle cx="17" cy="5" r="1.2" fill="#FFFFFF"/>
+    <circle cx="23" cy="5" r="1.2" fill="#FFFFFF"/>
+    <circle cx="8" cy="10" r="1.2" fill="#FFFFFF"/>
+    <circle cx="14" cy="10" r="1.2" fill="#FFFFFF"/>
+    <circle cx="20" cy="10" r="1.2" fill="#FFFFFF"/>
+    <circle cx="5" cy="15" r="1.2" fill="#FFFFFF"/>
+    <circle cx="11" cy="15" r="1.2" fill="#FFFFFF"/>
+    <circle cx="17" cy="15" r="1.2" fill="#FFFFFF"/>
+    <circle cx="23" cy="15" r="1.2" fill="#FFFFFF"/>
+    <circle cx="8" cy="20" r="1.2" fill="#FFFFFF"/>
+    <circle cx="14" cy="20" r="1.2" fill="#FFFFFF"/>
+    <circle cx="20" cy="20" r="1.2" fill="#FFFFFF"/>
+    <!-- Wavy highlight overlay -->
+    <rect x="0" y="0" width="64" height="48" fill="url(#wave-us)" style="mix-blend-mode: overlay;"/>
+  </g>
+</svg>

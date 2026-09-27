@@ -1,0 +1,27 @@
+<svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-4" y="-2" width="72" height="56" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    <linearGradient id="wave" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="25%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="75%" stop-color="#000000" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+    <clipPath id="flag-shape">
+      <path d="M4 8C14 4 22 12 32 8C42 4 50 12 60 8V40C50 44 42 36 32 40C22 44 14 36 4 40V8Z"/>
+    </clipPath>
+  </defs>
+  <g filter="url(#shadow)" clip-path="url(#flag-shape)">
+    <!-- White stripe -->
+    <rect x="0" y="0" width="64" height="17" fill="#F5F5F5"/>
+    <!-- Blue stripe -->
+    <rect x="0" y="15" width="64" height="17" fill="#0039A6"/>
+    <!-- Red stripe -->
+    <rect x="0" y="30" width="64" height="18" fill="#D52B1E"/>
+    <!-- Wavy highlight overlay -->
+    <rect x="0" y="0" width="64" height="48" fill="url(#wave)" style="mix-blend-mode: overlay;"/>
+  </g>
+</svg>
